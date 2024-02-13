@@ -3,7 +3,6 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/db";
-
 export async function createSnippet(
   formState: { message: string },
   formData: FormData
@@ -51,11 +50,10 @@ export async function editSnippet(id: number, code: string) {
     where: { id },
     data: { code },
   });
-
-  const snippetPath = `/snippets/${id}`;
-
-  revalidatePath(snippetPath);
-  redirect(snippetPath);
+  // const snippetPath = `/snippets/${id}`;
+  //
+  // revalidatePath(snippetPath);
+  // redirect(snippetPath);
 }
 
 export async function deleteSnippet(id: number) {

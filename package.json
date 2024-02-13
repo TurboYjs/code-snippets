@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "ts-node --project tsconfig.server.json server.ts",
+    "build:server": "tsc --project tsconfig.server.json",
+    "build:next": "next build",
+    "build": "npm run build:next && npm run build:server",
+    "lint": "next lint",
+    "start": "NODE_ENV=production node dist/index.js",
+    "preinstall": "prisma generate"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
@@ -14,7 +17,15 @@
     "next": "14.0.2",
     "prisma": "^5.5.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "monaco-editor": "^0.33.0",
+    "monaco-editor-workers": "^0.33.0",
+    "monaco-languageclient": "^2.0.2",
+    "vscode-ws-jsonrpc": "^1.0.1",
+    "y-monaco": "^0.1.4",
+    "monaco-vim": "^0.3.4",
+    "normalize-url": "^7.0.3",
+    "react-hot-toast": "^2.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -32,6 +43,13 @@
     "postcss": "^8",
     "prettier": "^2.7.1",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "y-websocket": "^1.4.5",
+    "yjs": "^13.5.45",
+    "ws": "^8.13.0",
+    "@types/ws": "^8.5.5",
+    "nodemon": "^2.0.4",
+    "ts-node": "^8.10.2",
+    "jotai": "^1.7.2"
   }
 }

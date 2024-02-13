@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { db } from "@/db";
 
 import SnippetEditForm from "@/components/snippet-edit-form";
+import Link from "next/link";
 
 interface SnippetEditPageProps {
   params: {
@@ -22,7 +23,15 @@ export default async function SnippetEditPage(props: SnippetEditPageProps) {
 
   return (
     <div>
-      <SnippetEditForm snippet={snippet} />
+      <div className="flex my-2 justify-between items-center">
+        <h1 className="text-xl font-bold"> {snippet.title}</h1>
+        <div className="flex gap-4">
+          <Link href={`/`} className="p-2 border rounded">
+            Home
+          </Link>
+        </div>
+      </div>
+      <SnippetEditForm snippet={snippet} id={id}/>
     </div>
   );
 }
